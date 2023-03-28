@@ -1,8 +1,6 @@
 import { Router, Request, Response } from "express";
 import user from './user';
-// import spent from './spent';
 import UserController from "../controllers/UserController";
-import {authorization} from '../middlewares';
 
 const routes = Router();
 

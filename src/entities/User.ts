@@ -6,19 +6,16 @@ export class User {
     @PrimaryGeneratedColumn()
     idSolicitacao: number;
 
-    // @Column({nullable: true, unique:true, default:null})
-    // idSolicitacao: number;
-
     @Column({nullable:false, unique:true, length: 100})
     nomeSolicitacao: string;
 
-    @Column({nullable: false, unique:true, length: 70})
+    @Column({nullable: false, unique:false, length: 70})
     tipoSolicitacao: string;
 
-    @Column({nullable: true, unique:true, length: 70, default:null})
+    @Column({nullable: true, unique:false, length: 70})
     solicitante: string;
 
-    @Column({nullable: true, unique:true, default:null})
+    @Column({nullable: true, unique:false, default:null})
     verificaSolicitacao: boolean;
     
 }

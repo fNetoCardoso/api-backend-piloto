@@ -30,14 +30,13 @@ class UserController {
         // retorna o token para o cliente
         return res.json({
           id: usuario.idSolicitacao,
-          nomeSolicitacao: usuario.nomeSolicitacao,
-          token
+          nomeSolicitacao: usuario.nomeSolicitacao
         });
       }
-      return res.json({ error: "Dados de login não conferem" });
+      return res.json({ error: "Dados não conferem" });
     }
     else {
-      return res.json({ error: "Usuário não localizado" });
+      return res.json({ error: "Solicitação não localizada" });
     }
   }
 
@@ -58,7 +57,7 @@ class UserController {
     const usuario: any = await AppDataSource.manager.save(User, obj).catch((e) => {
       // testa se o e-mail é repetido
       if (/(nomeSolicitante)[\s\S]+(already exists)/.test(e.detail)) {
-        return { error: 'e-mail já existe' };
+        return { error: 'solicitação já existe' };
       }
       return { error: e.message };
     })
@@ -70,8 +69,7 @@ class UserController {
         id: usuario.idSolicitacao,
         nome: usuario.nomeSolicitacao,
         tipoSolicitacao: usuario.tipoSolicitacao,
-        solicitante: usuario.solicitante,
-        token
+        solicitante: usuario.solicitante
       });
     }
     return res.json(usuario);
